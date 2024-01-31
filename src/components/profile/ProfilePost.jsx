@@ -4,6 +4,7 @@ import {AiFillHeart} from 'react-icons/ai'
 import { FaComment } from "react-icons/fa";
 import  {MdDelete  } from "react-icons/md";
 import Comment from '../comment/Comment';
+import PostFooter from '../feedPosts/PostFooter';
 
 const ProfilePost = ({img}) => {
     // for modal
@@ -45,11 +46,32 @@ const ProfilePost = ({img}) => {
                                 </Box>
                             </Flex>
                             <Divider my={4} bg={'gray.500'}/>
-                            <VStack w={'full'} alignItems={'start'} maxH={'350px'} overflow={'auto'}>
+                            <VStack w={'full'} alignItems={'start'} maxH={'350px'} overflowY={'auto'}>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
                                 <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
                                 <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
                                 <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
                             </VStack>
+                            <Divider my={4} bg={'gray.800'}/>
+                            <PostFooter  isProfilePage={true}/>
                         </Flex>
                     </Flex>
                 </ModalBody>
