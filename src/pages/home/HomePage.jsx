@@ -10,7 +10,7 @@ const HomePage = () => {
         <Box flex={2} py={10}>
           <FeedPosts />
         </Box>
-        <Box flex={3} mr={20} display={{base:'none' , lg:'block'}} maxW={'300px'} border={'1px solid red'}>
+        <Box flex={3} mr={20} display={{base:'none' , lg:'block'}} maxW={'300px'}>
           <Suggestedusers />
         </Box>
       </Flex>
