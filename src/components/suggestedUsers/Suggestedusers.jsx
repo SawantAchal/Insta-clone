@@ -15,9 +15,9 @@ const Suggestedusers = () => {
                 See All
             </Text>
         </Flex>
-        <SuggestedUser />
-        <SuggestedUser />
-        <SuggestedUser />
+        <SuggestedUser name='' followers={1393} avatar=''/>
+        <SuggestedUser name='' followers={1393} avatar=''/>
+        <SuggestedUser name='' followers={1393} avatar=''/>
         <Box fontSize={12} color={'gray.500'} mt={5} alignSelf={'start'}>
             &copy;2024 Built By {' '}
             <Link href='' target='_blank' color={'blue.500'} fontSize={14}>AchalSawant</Link>
