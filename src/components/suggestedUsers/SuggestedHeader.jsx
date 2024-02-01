@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom'
 const SuggestedHeader = () => {
   const {handleLogout, isLogginOut} = useLogout()
   const authUser = useAuthStore(state =>state.user)
+    // Add a conditional check for authUser
+    if (!authUser) {
+      // Handle the case where authUser is null
+      return null; // or return a loading state or redirect the user
+    }
   return (
     <Flex justifyContent={'space-between'} alignItems={'center'} w={'full'}>
         <Flex alignItems={'center'} gap={2}>
