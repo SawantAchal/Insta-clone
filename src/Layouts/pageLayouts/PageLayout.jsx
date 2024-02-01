@@ -18,17 +18,20 @@ const PageLayout = ({children}) => {
   return (
     <Flex flexDir={canRenderNavbar ? "column" : "row"}>
         {/* side bar on left */}
+
         {/* {pathname !== '/auth' ? ( */}
+
         {/* sidebar */}
         {canRenderSidebar ? (
+            // sidebar
             <Box w={{base:'70px' , md:'240px'}}>
                 <SideBar/>
             </Box>
         ):null}
+
         {/* navbar */}
-        {
-            canRenderNavbar ? <Navbar /> : null
-        }
+        {canRenderNavbar ? <Navbar /> : null}
+
         {/* the page content in the right */}
         <Box flex={1} w={{base:'calc(100% - 70px)', md:'calc(100%- 240px)'}} mx={'auto'}>
             {children}
