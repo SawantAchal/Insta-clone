@@ -69,25 +69,37 @@ const ProfilePost = ({post}) => {
             <ModalContent>
                 <ModalCloseButton />
                 <ModalBody bg={'black'} pb={5}>
-                    <Flex gap={4}  mx={'auto'} maxH={'90vh'} maxW={'50vh'} w={{ base: "90%", sm: "70%", md: "full" }}>
+                    {
+                        authUser?.uid === userProfile.uid && (
+                            <Button  size={'sm'} bg={'transparent'} _hover={{bg:'whiteAlpha.300' , color:'red.600'}} borderRadius={4} p={1} onClick={handleDeletePost} isLoading={isDeleting}>
+                                <MdDelete size={20} cursor={'pointer'}/>
+                            </Button>
+                        )
+                    }
+                    <Divider my={4} bg={'gray.800'} display={{base:'flex', md:'none'}}/>
+                    <Flex gap={4}  mx={'auto'} maxH={'90vh'} maxW={'50vh'} w={{ base: "90%", sm: "70%", md: "full" }} direction={{ base: 'column', md: 'row' }} justifyContent='center'>
+                        <Flex alignItems={'center'} gap={4}  display={{base:'flex', md:'none'}}>
+                            <Avatar src={userProfile.profilePicURl} size={'sm'} name='as a programmer'/>
+                            <Text fontWeight={'bold'} fontSize={12}>{userProfile.username}</Text>
+                        </Flex>
                         <Flex justifyContent={'center'} alignItems={'center'}  borderRadius={4} overflow={'hidden'} border={'1px solid'} borderColor={'whiteAlpha.300'} flex={1.5}>
                             <Image src={post.imageURL} alt='profile post' />
                         </Flex>
-                        <Flex flex={1} flexDir={'column'} px={10} display={{base:'none' , md:'flex'}}>
+                        <Flex flex={1} flexDir={'column'} px={10}>
                             <Flex alignItems={'center'} justifyContent={'space-between'}>
-                                <Flex alignItems={'center'} gap={4}>
-                                    <Avatar src={userProfile.profilePicURl} size={'sm'} name='as a programmer'/>
+                                <Flex alignItems={'center'} gap={4} display={{base:'none', md:'flex'}}>
+                                    <Avatar src={userProfile.profilePicURL} size={'sm'} />
                                     <Text fontWeight={'bold'} fontSize={12}>{userProfile.username}</Text>
                                 </Flex>
                                 {
                                     authUser?.uid === userProfile.uid && (
-                                        <Button size={'sm'} bg={'transparent'} _hover={{bg:'whiteAlpha.300' , color:'red.600'}} borderRadius={4} p={1} onClick={handleDeletePost} isLoading={isDeleting}>
+                                        <Button display={{base:'none', md:'flex'}} size={'sm'} bg={'transparent'} _hover={{bg:'whiteAlpha.300' , color:'red.600'}} borderRadius={4} p={1} onClick={handleDeletePost} isLoading={isDeleting}>
                                             <MdDelete size={20} cursor={'pointer'}/>
                                         </Button>
                                     )
                                 }
                             </Flex>
-                            <Divider my={4} bg={'gray.500'}/>
+                            <Divider my={4} bg={'gray.500'} display={{base:'none', md:'flex'}}/>
                             <VStack w={'full'} alignItems={'start'} maxH={'350px'} overflowY={'auto'}>
                                 {/* for caption */}
                                 {
@@ -100,7 +112,7 @@ const ProfilePost = ({post}) => {
                                     ))
                                 }
                             </VStack>
-                            <Divider my={4} bg={'gray.8000'}/>
+                            <Divider my={4} bg={'gray.800'}/>
                             <PostFooter  isProfilePage={true} post={post}/>
                         </Flex>
                     </Flex>
