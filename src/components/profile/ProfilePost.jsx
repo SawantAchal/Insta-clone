@@ -64,12 +64,12 @@ const ProfilePost = ({post}) => {
             </Flex>
             <Image src={post.imageURL} alt='profile post' w={'100%'} h={'100%'} objectFit={'cover'}/>
         </GridItem>
-        <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{base:'3xl' , md:'5xl'}}>
+        <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{ base: "3xl", md: "5xl" }}>
             <ModalOverlay />
             <ModalContent>
                 <ModalCloseButton />
                 <ModalBody bg={'black'} pb={5}>
-                    <Flex gap={4} w={{base:"90%",sm:'70%',md:'full'}} mx={'auto'} maxH={'90vh'} maxW={'50vh'}>
+                    <Flex gap={4}  mx={'auto'} maxH={'90vh'} maxW={'50vh'} w={{ base: "90%", sm: "70%", md: "full" }}>
                         <Flex justifyContent={'center'} alignItems={'center'}  borderRadius={4} overflow={'hidden'} border={'1px solid'} borderColor={'whiteAlpha.300'} flex={1.5}>
                             <Image src={post.imageURL} alt='profile post' />
                         </Flex>
