@@ -20,7 +20,7 @@ const ProfilePosts = () => {
             ))
         }
         {
-            !isLoading &&
+            !isLoading &&(
                 <>
                     {
                         posts.map((post) => (
@@ -28,7 +28,7 @@ const ProfilePosts = () => {
                         ))
                     }
                 </>
-            
+            )
         }
     </Grid>
   )
