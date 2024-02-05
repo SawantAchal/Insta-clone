@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <>
         <Input placeholder='Email' fontSize={14} type='email' value={inputs.email} onChange={(e) => setInputs({...inputs,email:e.target.value})} size={'sm'}/>
-        <Input placeholder='Password' fontSize={14} type='password'value={inputs.password} onChange={(e) => setInputs({...inputs,password:e.target.value})} size={'sm'} />
+        <Input placeholder='Password' fontSize={14} type='password' value={inputs.password} onChange={(e) => setInputs({...inputs,password:e.target.value})} size={'sm'} />
         {
           error && (
             <Alert status='error' fontSize={13} p={2} borderRadius={4}>
