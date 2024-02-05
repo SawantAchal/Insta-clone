@@ -20,9 +20,9 @@ const CreatePost = () => {
   const imageRef = useRef(null)
   // for render selected image
   const {selectedFile,handleImageChange,setSelectedFile} = usePreviewImg()
-
   const {isLoading,handleCreatePost} = useCreatePost()
   const showToast = useShowToast()
+
   const handlePostImages = async() =>{
     try {
       await handleCreatePost(selectedFile,caption);
@@ -30,7 +30,7 @@ const CreatePost = () => {
       SetCaption("");
       setSelectedFile(null)
     } catch (error) {
-      showToast("Error" ,error.message,"error")
+      showToast("Error",error.message,"error")
     }
   }
   return (
@@ -78,6 +78,7 @@ function useCreatePost() {
   const authUser = useAuthStore((state) => state.user)
   const createPost = usePostStore(state => state.createPost)
   const addPost = useUserProfileStore(state => state.addPost)
+  const userProfile = useUserProfileStore(state => state.userProfile)
   const {pathname} = useLocation()
 
   const handleCreatePost = async (selectedFile,caption) => {
@@ -101,12 +102,14 @@ function useCreatePost() {
       await updateDoc(postDocRef,{imageURL:downloadURL});
 
       newPost.imageURL = downloadURL;
-      createPost({...newPost,id:postDocRef.id})
-      addPost({...newPost,id:postDocRef.id})
+      //user ani post karnar same asel tr proffile madeh post add (image) add karto 
+      if(userProfile.uid === authUser.uid)createPost({...newPost,id:postDocRef.id})
+      //checks karto ki post karanar ani account login asnar same ahe asel tr post madhe count add karto ny tr 
+      if (pathname !== "/" && userProfile.uid === authUser.uid) addPost({...newPost,id:postDocRef.id})
       showToast("success","post create successfully","success")
 
     } catch (error) {
-      showToast("Error" ,error.message,"error")
+      showToast("Error",error.message,"error")
     }finally{
       setIsLoading(false)
     }
