@@ -5,9 +5,8 @@ import useAuthStore from '../../store/authStore'
 import { Link } from 'react-router-dom'
 
 const SuggestedUser = ({user , setUser}) => {
-    //const [isFollowed , setIsFollowed] = useState(false)
     const {isFollowing , isUpdating,handleFollowUser } = useFollowUnfollowUser(user.uid)
-    const authUser = useAuthStore(state => state.user)
+    const authUser = useAuthStore((state) => state.user)
 
     const onFollowUser = async () => {
         await handleFollowUser();
@@ -20,11 +19,11 @@ const SuggestedUser = ({user , setUser}) => {
   return (
     <Flex justifyContent={'space-between'} alignItems={'center'} w={'full'}>
         <Flex alignItems={'center'} gap={2}>
-            <Link to={`${user.username}`}>
+            <Link to={`/${user.username}`}>
                 <Avatar src={user.profilePicURL}  size={'md'}/>
             </Link>
             <VStack spacing={2} alignItems={'flex-start'}>
-                <Link to={`${user.username}`}>
+                <Link to={`/${user.username}`}>
                     <Box fontSize={12} fontWeight={'bold'}>
                         {user.fullName}
                     </Box>
@@ -38,7 +37,7 @@ const SuggestedUser = ({user , setUser}) => {
             authUser.uid !== user.uid && (
                 <Button fontSize={13} bg={'transparent'} p={0} h={'max-content'} fontWeight={'medium'} color={'blue.400'} cursor={'pointer'} _hover={{color:'white'}} onClick={onFollowUser} isLoading={isUpdating}>
                     {
-                        !isFollowing ? "Follow" : "UnFollow"
+                        isFollowing ? "UnFollow" : "Follow"
                     }
                 </Button>
             )
