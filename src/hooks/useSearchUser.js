@@ -15,17 +15,18 @@ const useSearchUser = () => {
             const q = query(collection(firestore,"users"), where("username","==",username))
             const querySnapshot = await getDocs(q)
             if(querySnapshot.empty) return showToast("Error","User not found" ,"error")
+
             querySnapshot.forEach((doc) => {
                 setUser(doc.data())
             })
         } catch (error) {
             showToast("Error",error.message,'error')
-            setUser(nu)
+            setUser(null)
         }finally{
             setIsLoading(false)
         }
     }
-  return {isLoading , getUserProfile , user,setUser}
+  return {isLoading , getUserProfile ,user,setUser}
 }
 
 export default useSearchUser
