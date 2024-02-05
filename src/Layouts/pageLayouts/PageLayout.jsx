@@ -1,3 +1,5 @@
+// instead of adding the Sidebar component to every page, we can add it only once to the PageLayout component and wrap the children with it. This way, we can have a sidebar on every page except the AuthPage.
+
 import { Box, Flex, Spinner } from '@chakra-ui/react'
 import React from 'react'
 import SideBar from '../../components/sidebar/SideBar'
@@ -8,19 +10,16 @@ import Navbar from '../../components/navbar/Navbar'
 
 const PageLayout = ({children}) => {
     const {pathname} = useLocation()
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const canRenderSidebar = pathname !== '/auth' && user;
     const canRenderNavbar = !user && !loading && pathname !== '/auth';
 
-    const checkingUserIsAuth = !user && loading
+    const checkingUserIsAuth = !user && loading;
     if (checkingUserIsAuth) return <PageLayoutSpinner />
     
   return (
     <Flex flexDir={canRenderNavbar ? "column" : "row"}>
         {/* side bar on left */}
-
-        {/* {pathname !== '/auth' ? ( */}
-
         {/* sidebar */}
         {canRenderSidebar ? (
             // sidebar
