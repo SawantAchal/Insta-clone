@@ -22,10 +22,6 @@ const Suggestedusers = () => {
                 </Flex>
             )
         }
-
-        {/* <SuggestedUser name='' followers={1393} avatar=''/>
-        <SuggestedUser name='' followers={1393} avatar=''/>
-        <SuggestedUser name='' followers={1393} avatar=''/> */}
         {
             suggestedUsers.map((user) => (
                 <SuggestedUser user={user} key={user.id}/>
