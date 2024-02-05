@@ -64,7 +64,7 @@ const EditProfile = ({ isOpen, onClose }) => {
 
 								<FormControl>
 									<FormLabel fontSize={"sm"}>Username</FormLabel>
-									<Input	placeholder={"Username"}	size={"sm"}	type={"text"}	value={inputs.username || authUser.username}	onChange={(e) => setInputs({ ...inputs, username: e.target.value })}/>
+									<Input	placeholder={"Username"} size={"sm"} type={"text"}	value={inputs.username || authUser.username} onChange={(e) => setInputs({ ...inputs, username: e.target.value })}/>
 								</FormControl>
 
 								<FormControl>
