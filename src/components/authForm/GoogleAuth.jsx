@@ -8,7 +8,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const GoogleAuth = ({prefix}) => {
   // coming from firebase hooks
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, error] = useSignInWithGoogle(auth);
   const showToast = useShowToast();
   const loginUser = useAuthStore((state) => state.login)
 
@@ -21,7 +21,7 @@ const GoogleAuth = ({prefix}) => {
       }
 
       // checking user is exits in database or not and provide a snap shot of existing doc
-      const userRef = doc(firestore,"users" . newUser.user.uid)
+      const userRef = doc(firestore,"users" ,newUser.user.uid)
       const userSnap = await getDoc(userRef)
 
       if (userSnap.exists()) {
