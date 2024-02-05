@@ -12,6 +12,7 @@ import { deleteObject, ref } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebase';
 import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import usePostStore from '../../store/postStore';
+import Caption from '../comment/Caption';
 
 const ProfilePost = ({post}) => {
     const userProfile = useUserProfileStore((state) => state.userProfile)
@@ -38,9 +39,9 @@ const ProfilePost = ({post}) => {
             })
             deletePost(post.id);
             decrementPostsCount(post.id)
-            showToast("success" ,"Post deleted successfully" ,"success")
+            showToast("Success" ,"Post deleted successfully" ,"success")
         } catch (error) {
-            showToast("Error" ,error.message ,"error")
+            showToast("Error",error.message ,"error")
         }finally{
             setIsDeleting(false)
         }
@@ -88,11 +89,19 @@ const ProfilePost = ({post}) => {
                             </Flex>
                             <Divider my={4} bg={'gray.500'}/>
                             <VStack w={'full'} alignItems={'start'} maxH={'350px'} overflowY={'auto'}>
-                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
-                                <Comment createdAt='1d ago' username='asaprogrammer' profilePic='/profilepic.png' text={'hey'}/>
+                                {/* for caption */}
+                                {
+                                    post.caption && <Caption post={post}/>
+                                }
+                                {/* for comment */}
+                                {
+                                    post.comments.map((comment) => (
+                                        <Comment key={comment.id} comment={comment} />
+                                    ))
+                                }
                             </VStack>
-                            <Divider my={4} bg={'gray.800'}/>
-                            <PostFooter  isProfilePage={true}/>
+                            <Divider my={4} bg={'gray.8000'}/>
+                            <PostFooter  isProfilePage={true} post={post}/>
                         </Flex>
                     </Flex>
                 </ModalBody>
